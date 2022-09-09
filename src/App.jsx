@@ -22,7 +22,7 @@ export default function App() {
   //本来ならばonChangeTextでText変更によりstateが変わり、
   //レンダリング際にonClickCloseもstateが変わったと見なされ、再レンダリングされてしまう
 
-  //関心対象を空の配列にすることで、”最初に生成したsetOpen(false)をずっと使う”という意味になる
+  //関心対象を空の配列にすることで、”最初に生成したsetOpen(false)をそのままずっと使う”という意味になる
   //・・・再レンダリングされない
 
   return (
