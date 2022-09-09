@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { ChildeArea } from "./ChildeArea";
 import "./styles.css";
 
 export default function App() {
   console.log("Appがレンダリングされた");
-  // const [count, setCount] = useState(0);
   const [text, setText] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -12,20 +11,27 @@ export default function App() {
     setText(event.target.value);
   };
 
-  const onClickOnOff = () => {
+  const onClickOpen = () => {
     setOpen(!open);
   };
 
-  // const countup = () => {
-  //   setCount(count + 1);
-  // };
+  const onClickClose = useCallback(() => {
+    setOpen(false);
+  }, []);
+  // useCallback(関数、関心対象)
+  //本来ならばonChangeTextでText変更によりstateが変わり、
+  //レンダリング際にonClickCloseもstateが変わったと見なされ、再レンダリングされてしまう
+
+  //関心対象を空の配列にすることで、”最初に生成したsetOpen(false)をずっと使う”という意味になる
+  //・・・再レンダリングされない
+
   return (
     <>
       <div className="App">
         <input value={text} onChange={onChangeText} />
         <br />
-        <button onClick={onClickOnOff}>表示</button>
-        <ChildeArea open={open} />
+        <button onClick={onClickOpen}>表示</button>
+        <ChildeArea open={open} onClickClose={onClickClose} />
         {/* {open && <ChildeArea />} */}
       </div>
     </>
