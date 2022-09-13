@@ -1,5 +1,10 @@
 import { useState, useCallback } from "react";
-import { ChildeArea } from "./ChildeArea";
+import { ChildeArea } from "./components/ChildeArea";
+import { InlineStyle } from "./components/InlineStyle";
+import { CssModules } from "./components/CssModules";
+import { StyledJsx } from "./components/StyledJsx";
+import { StyledComponents } from "./components/StyledComponents";
+import { Emotion } from "./components/Emotion";
 import "./styles.css";
 
 export default function App() {
@@ -33,6 +38,11 @@ export default function App() {
         <button onClick={onClickOpen}>表示</button>
         <ChildeArea open={open} onClickClose={onClickClose} />
         {/* {open && <ChildeArea />} */}
+        <InlineStyle />
+        <CssModules />
+        <StyledJsx />
+        <StyledComponents />
+        <Emotion />
       </div>
     </>
   );
